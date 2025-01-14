@@ -18,14 +18,17 @@ class Inputs extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding:const EdgeInsets.symmetric(horizontal: 50),
+      padding: const EdgeInsets.symmetric(horizontal: 50),
       child: ShadInput(
         textAlign: TextAlign.start,
         placeholder: Text(currentLabel),
         obscureText: obscrure,
         controller: controller,
-        keyboardType: (currentLabel=='Email')?TextInputType.emailAddress:null,
-
+        keyboardType:
+            (currentLabel == 'Email') ? TextInputType.emailAddress : null,
+        decoration: ShadDecoration(
+            border: ShadBorder.all(
+                color: (currentError == '') ? Colors.black : Colors.red)),
       ),
     );
   }

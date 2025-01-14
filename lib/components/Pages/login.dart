@@ -31,13 +31,13 @@ class Login extends StatelessWidget {
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  BlocBuilder<LoginBloc,LoginState>(builder: (context,state){
-                    if(state.errorMessage.isEmpty){
+                  BlocBuilder<LoginBloc, LoginState>(builder: (context, state) {
+                    if (state.errorMessage.isEmpty) {
                       return const Text(
                         "Login",
                         style: TextStyle(fontSize: 30, color: Colors.blue),
                       );
-                    }else{
+                    } else {
                       return const Text(
                         "Try again",
                         style: TextStyle(fontSize: 30, color: Colors.redAccent),
@@ -47,12 +47,14 @@ class Login extends StatelessWidget {
                   const SizedBox(
                     height: 40,
                   ),
-                  Inputs(
-                    controller: _emailController,
-                    currentLabel: "Email",
-                    obscrure: false,
-                    currentError: "",
-                  ),
+                  BlocBuilder<LoginBloc, LoginState>(builder: (context, state) {
+                    return Inputs(
+                      controller: _emailController,
+                      currentLabel: "Email",
+                      obscrure: false,
+                      currentError: state.errorMessage,
+                    );
+                  }),
                   BlocBuilder<LoginBloc, LoginState>(builder: (context, state) {
                     if (state.errorMessage.isNotEmpty) {
                       return Errortext(title: state.errorMessage);
