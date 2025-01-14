@@ -31,10 +31,19 @@ class Login extends StatelessWidget {
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  const Text(
-                    "Login",
-                    style: TextStyle(fontSize: 30, color: Colors.blue),
-                  ),
+                  BlocBuilder<LoginBloc,LoginState>(builder: (context,state){
+                    if(state.errorMessage.isEmpty){
+                      return const Text(
+                        "Login",
+                        style: TextStyle(fontSize: 30, color: Colors.blue),
+                      );
+                    }else{
+                      return const Text(
+                        "Try again",
+                        style: TextStyle(fontSize: 30, color: Colors.redAccent),
+                      );
+                    }
+                  }),
                   const SizedBox(
                     height: 40,
                   ),
