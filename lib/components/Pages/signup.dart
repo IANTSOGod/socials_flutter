@@ -112,6 +112,14 @@ class Signup extends StatelessWidget {
                           width: 300,
                           backgroundColor:
                               ShadTheme.of(context).colorScheme.primary,
+                            shadows: [
+                              BoxShadow(
+                                color: Colors.blue.withOpacity(.4),
+                                spreadRadius: 4,
+                                blurRadius: 10,
+                                offset: const Offset(0, 2),
+                              ),
+                            ],
                           child: const Text('Sign up'),
                         ),
                       );
